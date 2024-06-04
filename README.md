@@ -1,4 +1,4 @@
-# cDAM
+# LyMOI
 **Note**: The cDAM framework, which incorporated graph neural network (GNN) and deep neural network (DNN), was developed to predict potentially new autophagy regulators and their MMAs from big omics datasets. 
 
 ## Requirements
