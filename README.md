@@ -10,7 +10,7 @@ The main requirements are listed below:
 * Scikit-Learn
 * Matplotlib
 
-## The description of cDAM source codes
+## The description of LyMOI source codes
 
 * Teacher_model_predictor.py
 
@@ -26,7 +26,7 @@ The main requirements are listed below:
     The code is used for the Glucose starvation induction model loading and data prediction.
 
 
-## The models in cDAM
+## The models in LyMOI
 
 * teacher_model
 
