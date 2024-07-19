@@ -40,3 +40,18 @@ The main requirements are listed below:
 * Sdg_model
 
     The model is used for the Glucose starvation induction model data prediction.
+  
+## OS Requirements
+
+Above codes have been tested on the following systems:
+
+* Windows: Windows7, Windos10
+* Linux: CentOS linux 7.8.2003
+
+## Hardware Requirements
+
+All codes and softwares could run on a "normal" desktop computer, no non-standard hardware is needed.
+
+## Installation guide
+
+All codes can run directly on a "normal" computer with Python 3.5.6 installed, no extra installation is required.
