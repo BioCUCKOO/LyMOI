@@ -9,7 +9,7 @@ from sklearn.model_selection import StratifiedKFold
 
 def prepare_feature():
 
-    with open('Omics_feature.txt', 'r') as f:
+    with open('new_Omics_feature.txt', 'r') as f:
         one_feature, name_list = [], []
         for line in f:
             uniprotid, *features = line.strip().split('\t')
@@ -19,7 +19,7 @@ def prepare_feature():
 
     one_feature = torch.tensor(one_feature)
 
-    with open('PPI_feature.txt', 'r') as f:
+    with open('new_PPI_feature.txt', 'r') as f:
         ppi_feature_dict = {}
         for line in f:
             uniprotid, *ppi_features = line.strip().split('\t')
