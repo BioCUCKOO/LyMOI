@@ -38,13 +38,13 @@ def prepare_feature():
     return combined_features, name_list
 
 def prepare_label(name_list):
-    with open('all_positive_gene.txt', 'r') as f:
+    with open('new_all_positive_gene.txt', 'r') as f:
         dict_at1 = {}
         for line in f:
             gene = line.strip('\n')
             dict_at1[gene] = 'yes'
 
-    with open('single_positive_gene.txt', 'r') as f:
+    with open('new_single_positive_gene.txt', 'r') as f:
         dict_at2 = {}
         for line in f:
             gene = line.strip('\n')
@@ -169,9 +169,7 @@ def cross_validate(X, y, model_class, num_folds=10, epochs=100, lr=0.0001):
         test_loader = DataLoader(test_dataset, batch_size=20)
 
         model = load_checkpoint('teacher_model')
-        class_weights = torch.tensor([1.0, len(y) / y.sum().item()])
-        loss_function = nn.BCELoss(weight=class_weights)
-        #loss_function = nn.BCELoss()
+        loss_function = nn.BCELoss()
         optimizer = torch.optim.Adam(model.parameters(), lr=lr)
 
         for epoch in range(epochs):
@@ -187,7 +185,7 @@ def cross_validate(X, y, model_class, num_folds=10, epochs=100, lr=0.0001):
 
         all_true_labels.append(true_labels)
         all_pred_values.append(pred_values)
-        all_names.extend([name_list[i] for i in test_index])  # 添加基因名字
+        all_names.extend([name_list[i] for i in test_index])  
 
         fold_num += 1
 
@@ -199,7 +197,6 @@ def cross_validate(X, y, model_class, num_folds=10, epochs=100, lr=0.0001):
     print(f"Mean AUC: {np.mean(aucs):.4f}, Std AUC: {np.std(aucs):.4f}")
     print(f"Overall AUC: {overall_auc:.4f}")
 
-    # 将基因名字、真实标签和预测标签一起保存
     results = np.column_stack((all_names, all_true_labels[:, 1], all_pred_values[:, 1]))
     np.savetxt('result/' + str(num_folds) + 'folds_predictions.txt', results, delimiter='\t',
                header="Gene_Name\tTrue_Label\tPred_Label", fmt="%s")
