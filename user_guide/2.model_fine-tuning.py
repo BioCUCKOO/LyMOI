@@ -108,7 +108,7 @@ def compute_auc(y_true, y_pred):
 def load_checkpoint(path: str):
     state = torch.load(path)
     loaded_state_dict = state['state_dict']
-    model = GCN(27, 2)
+    model = GCN(50, 2)
     model_state_dict = model.state_dict()
 
     pretrained_state_dict = {}
@@ -215,4 +215,5 @@ if __name__ == "__main__":
     overall_auc = cross_validate(X_final, y, GCN, num_folds=4)
 
     print(f"Final Overall AUC: {overall_auc:.4f}")
+
 
